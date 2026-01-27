@@ -1,110 +1,118 @@
-import { motion } from "framer-motion";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import { motion } from 'framer-motion';
+import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
+import { useTranslation } from 'react-i18next';
 
 const Privacy = () => {
-  return (
-    <div className="min-h-screen">
-      <Navbar />
-      <main className="pt-32 pb-20">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mx-auto max-w-3xl"
-          >
-            <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-              Privacy Policy
-            </h1>
-            <p className="mt-4 text-muted-foreground">
-              Last updated: January 7, 2026
-            </p>
+	const { t } = useTranslation();
 
-            <div className="mt-12 space-y-8 text-muted-foreground">
-              <section>
-                <h2 className="text-2xl font-bold text-foreground">1. Introduction</h2>
-                <p className="mt-4 leading-relaxed">
-                  ReFreshly ("we," "our," or "us") is committed to protecting your privacy. 
-                  This Privacy Policy explains how we collect, use, disclose, and safeguard 
-                  your information when you use our mobile application and related services.
-                </p>
-              </section>
+	return (
+		// Changed font to Manrope for consistent Russian support
+		<div className="min-h-screen bg-gray-50 font-['Manrope']">
+			<Navbar />
 
-              <section>
-                <h2 className="text-2xl font-bold text-foreground">2. Information We Collect</h2>
-                <p className="mt-4 leading-relaxed">
-                  We collect information you provide directly to us, including:
-                </p>
-                <ul className="mt-4 list-inside list-disc space-y-2">
-                  <li>Name and contact information (email, phone number)</li>
-                  <li>Account credentials</li>
-                  <li>Payment information</li>
-                  <li>Order history and preferences</li>
-                  <li>Location data (with your consent)</li>
-                </ul>
-              </section>
+			<main className='pt-32 pb-24'>
+				<div className='container mx-auto px-4 md:px-8 relative z-10'>
+					<motion.div
+						initial={{ opacity: 0, y: 10 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5 }}
+						className='mx-auto max-w-5xl bg-white p-8 md:p-16 rounded-2xl border border-gray-100 shadow-sm'
+					>
+						{/* Document Header */}
+						<div className='border-b border-gray-100 pb-8 mb-10'>
+							<h1 className='text-3xl md:text-5xl font-bold tracking-tight text-gray-900'>
+								{t('privacy.title')}
+							</h1>
+							<p className='mt-4 text-base text-gray-500'>{t('privacy.lastUpdated')}</p>
+						</div>
 
-              <section>
-                <h2 className="text-2xl font-bold text-foreground">3. Data Residency</h2>
-                <div className="mt-4 rounded-2xl border border-primary/20 bg-green-highlight p-6">
-                  <p className="font-semibold text-foreground">
-                    We store personally identifiable information (PII) on servers physically 
-                    located in Kazakhstan.
-                  </p>
-                  <p className="mt-2 text-sm">
-                    This ensures compliance with local data protection regulations and 
-                    provides you with enhanced data security.
-                  </p>
-                </div>
-              </section>
+						{/* Document Content */}
+						<div className='space-y-12 text-gray-600 leading-relaxed text-lg'>
+							{/* 1. Intro */}
+							<section>
+								<h2 className='text-xl md:text-2xl font-bold text-gray-900 mb-4'>
+									{t('privacy.intro.title')}
+								</h2>
+								<p>{t('privacy.intro.text')}</p>
+							</section>
 
-              <section>
-                <h2 className="text-2xl font-bold text-foreground">4. How We Use Your Information</h2>
-                <p className="mt-4 leading-relaxed">
-                  We use the information we collect to:
-                </p>
-                <ul className="mt-4 list-inside list-disc space-y-2">
-                  <li>Provide, maintain, and improve our services</li>
-                  <li>Process transactions and send related information</li>
-                  <li>Send promotional communications (with your consent)</li>
-                  <li>Respond to your comments, questions, and requests</li>
-                  <li>Monitor and analyze trends, usage, and activities</li>
-                </ul>
-              </section>
+							{/* 2. Collection */}
+							<section>
+								<h2 className='text-xl md:text-2xl font-bold text-gray-900 mb-4'>
+									{t('privacy.collection.title')}
+								</h2>
+								<p className='mb-4'>{t('privacy.collection.text')}</p>
+								<ul className='list-disc pl-6 space-y-2 marker:text-[#415426]'>
+									<li>{t('privacy.collection.list.1')}</li>
+									<li>{t('privacy.collection.list.2')}</li>
+									<li>{t('privacy.collection.list.3')}</li>
+									<li>{t('privacy.collection.list.4')}</li>
+									<li>{t('privacy.collection.list.5')}</li>
+								</ul>
+							</section>
 
-              <section>
-                <h2 className="text-2xl font-bold text-foreground">5. Data Security</h2>
-                <p className="mt-4 leading-relaxed">
-                  We implement appropriate technical and organizational measures to protect 
-                  your personal information against unauthorized access, alteration, disclosure, 
-                  or destruction.
-                </p>
-              </section>
+							{/* 3. Data Residency */}
+							<section>
+								<h2 className='text-xl md:text-2xl font-bold text-gray-900 mb-4'>
+									{t('privacy.residency.title')}
+								</h2>
+								<p>
+									{t('privacy.residency.text')} <strong>{t('privacy.residency.country')}</strong>.
+								</p>
+							</section>
 
-              <section>
-                <h2 className="text-2xl font-bold text-foreground">6. Your Rights</h2>
-                <p className="mt-4 leading-relaxed">
-                  You have the right to access, correct, or delete your personal information. 
-                  You may also object to processing or request data portability. To exercise 
-                  these rights, please contact us at privacy@refreshly.kz.
-                </p>
-              </section>
+							{/* 4. Usage */}
+							<section>
+								<h2 className='text-xl md:text-2xl font-bold text-gray-900 mb-4'>
+									{t('privacy.usage.title')}
+								</h2>
+								<p className='mb-4'>{t('privacy.usage.text')}</p>
+								<ul className='list-disc pl-6 space-y-2 marker:text-[#415426]'>
+									<li>{t('privacy.usage.list.1')}</li>
+									<li>{t('privacy.usage.list.2')}</li>
+									<li>{t('privacy.usage.list.3')}</li>
+									<li>{t('privacy.usage.list.4')}</li>
+									<li>{t('privacy.usage.list.5')}</li>
+								</ul>
+							</section>
 
-              <section>
-                <h2 className="text-2xl font-bold text-foreground">7. Contact Us</h2>
-                <p className="mt-4 leading-relaxed">
-                  If you have any questions about this Privacy Policy, please contact us at:
-                </p>
-                <p className="mt-2 font-semibold text-foreground">privacy@refreshly.kz</p>
-              </section>
-            </div>
-          </motion.div>
-        </div>
-      </main>
-      <Footer />
-    </div>
-  );
+							{/* 5. Security */}
+							<section>
+								<h2 className='text-xl md:text-2xl font-bold text-gray-900 mb-4'>
+									{t('privacy.security.title')}
+								</h2>
+								<p>{t('privacy.security.text')}</p>
+							</section>
+
+							{/* 6. Rights */}
+							<section>
+								<h2 className='text-xl md:text-2xl font-bold text-gray-900 mb-4'>
+									{t('privacy.rights.title')}
+								</h2>
+								<p>{t('privacy.rights.text')}</p>
+							</section>
+
+							{/* 7. Contact */}
+							<section className='pt-8 border-t border-gray-100'>
+								<h2 className='text-xl md:text-2xl font-bold text-gray-900 mb-4'>
+									{t('privacy.contact.title')}
+								</h2>
+								<p>{t('privacy.contact.text')}</p>
+								<a
+									href='mailto:support@refreshly.kz'
+									className='inline-block mt-2 font-bold text-[#415426] hover:underline text-lg'
+								>
+									support@refreshly.kz
+								</a>
+							</section>
+						</div>
+					</motion.div>
+				</div>
+			</main>
+			<Footer />
+		</div>
+	);
 };
 
 export default Privacy;

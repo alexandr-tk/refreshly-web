@@ -1,108 +1,128 @@
-import { motion } from "framer-motion";
-import { Apple, Play } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { motion } from 'framer-motion';
+import AppStoreBadge from '@/components/icons/AppStoreBadge';
+import GooglePlayBadge from '@/components/icons/GooglePlayBadge';
+import { useTranslation } from 'react-i18next';
 
 export const Hero = () => {
-  return (
-    <section className="relative min-h-screen overflow-hidden pt-32 pb-20">
-      {/* Background gradient blob */}
-      <div className="absolute right-0 top-1/4 h-[600px] w-[600px] gradient-blob pointer-events-none" />
-      
-      <div className="container relative z-10">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-8">
-          {/* Left - Text Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="max-w-xl"
-          >
-            <h1 className="text-5xl font-bold leading-[1.1] tracking-tight text-foreground md:text-6xl lg:text-7xl">
-              Great Food.
-              <br />
-              <span className="text-primary">Unbeatable Prices.</span>
-            </h1>
-            
-            <p className="mt-6 text-xl leading-relaxed text-muted-foreground">
-              Reserve specific dishes from top Almaty restaurants at up to 60% off. 
-              No waiting, just pick up.
-            </p>
-            
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-10 flex flex-wrap gap-4"
-            >
-              <Button variant="hero" size="lg" className="gap-3">
-                <Apple size={22} strokeWidth={1.5} />
-                App Store
-              </Button>
-              <Button variant="hero-secondary" size="lg" className="gap-3">
-                <Play size={22} strokeWidth={1.5} />
-                Google Play
-              </Button>
-            </motion.div>
-            
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="mt-12 flex gap-12"
-            >
-              <div>
-                <p className="text-3xl font-bold tracking-tight text-foreground">50+</p>
-                <p className="mt-1 text-sm text-muted-foreground">Partner Restaurants</p>
-              </div>
-              <div>
-                <p className="text-3xl font-bold tracking-tight text-foreground">60%</p>
-                <p className="mt-1 text-sm text-muted-foreground">Average Savings</p>
-              </div>
-              <div>
-                <p className="text-3xl font-bold tracking-tight text-foreground">5min</p>
-                <p className="mt-1 text-sm text-muted-foreground">Avg. Pickup Time</p>
-              </div>
-            </motion.div>
-          </motion.div>
-          
-          {/* Right - Phone Mockup Placeholder */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative flex justify-center lg:justify-end"
-          >
-            {/* Phone Mockup Placeholder */}
-            <div className="relative">
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="relative z-10"
-              >
-                <div className="h-[650px] w-[320px] rounded-[3rem] border-2 border-dashed border-muted-foreground/30 bg-muted/50 flex items-center justify-center">
-                  <div className="text-center px-8">
-                    <div className="h-16 w-16 mx-auto rounded-2xl bg-muted-foreground/10 flex items-center justify-center mb-4">
-                      <span className="text-2xl">📱</span>
-                    </div>
-                    <p className="text-sm font-medium text-muted-foreground">
-                      Place 3D Phone Mockup Here
-                    </p>
-                    <p className="text-xs text-muted-foreground/60 mt-2">
-                      320 × 650px
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-              
-              {/* Decorative elements */}
-              <div className="absolute -bottom-4 -left-4 h-24 w-24 rounded-3xl bg-accent/20 blur-2xl" />
-              <div className="absolute -top-4 -right-4 h-32 w-32 rounded-full bg-primary/10 blur-3xl" />
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
+	const { t } = useTranslation();
+
+	return (
+		<section className='relative min-h-screen overflow-hidden pt-28 pb-16 lg:pt-32 lg:pb-32 bg-white'>
+			{/* Background gradient blob */}
+			<div className='absolute -right-20 top-0 lg:right-[-100px] lg:top-[10%] h-[400px] w-[400px] lg:h-[800px] lg:w-[800px] bg-[#415426]/5 rounded-full blur-[60px] lg:blur-[100px] pointer-events-none' />
+
+			<div className='container relative z-10 mx-auto px-4 sm:px-8 lg:px-16 max-w-8xl'>
+				<div className='grid items-center gap-12 lg:grid-cols-12 lg:gap-24'>
+					{/* Left - Text Content */}
+					<motion.div
+						initial={{ opacity: 0, y: 30 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.7, ease: 'easeOut' }}
+						className='max-w-2xl mx-auto lg:mx-0 lg:col-span-7 text-center lg:text-left'
+					>
+						{/* Heading */}
+						{/* CHANGED: Adjusted font sizes slightly for better fit with Cyrillic */}
+						<h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] font-bold leading-[1.1] tracking-tight text-gray-900 font-['Manrope']">
+							<span className='inline-block'>{t('hero.title_1')}</span>
+							<br />
+							<span className='text-[#415426] inline-block'>{t('hero.title_2')}</span>
+						</h1>
+
+						<p className="mt-6 lg:mt-8 text-lg sm:text-xl leading-relaxed text-gray-600 font-['Manrope'] max-w-lg mx-auto lg:mx-0">
+							{t('hero.description')}
+						</p>
+
+						{/* CTA Buttons */}
+						<motion.div
+							initial={{ opacity: 0, y: 20 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.5, delay: 0.3 }}
+							className='mt-8 lg:mt-12 flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-5 '
+						>
+							<a
+								href='https://apps.apple.com/kz/app/refreshly/id6756068724'
+								target='_blank'
+								rel='noopener noreferrer'
+								className='bg-transparent p-0 border-none hover:scale-105 transition-transform duration-300 rounded-[10px] h-12 sm:h-14 lg:h-16 inline-block'
+								aria-label='Download on the App Store'
+							>
+								<AppStoreBadge className='h-full w-auto p-0.5' />
+							</a>
+
+							<a
+								href='https://play.google.com/store/apps/details?id=com.refreshly'
+								target='_blank'
+								rel='noopener noreferrer'
+								className='bg-transparent p-0 border-none hover:scale-105 transition-transform duration-300 rounded-[10px] h-12 sm:h-14 lg:h-16 inline-block'
+								aria-label='Get it on Google Play'
+							>
+								<GooglePlayBadge className='h-full w-auto' />
+							</a>
+						</motion.div>
+
+						{/* Stats */}
+						<motion.div
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ duration: 0.5, delay: 0.5 }}
+							className='mt-10 lg:mt-12 flex justify-center lg:justify-start gap-6 sm:gap-10 lg:gap-16 border-t border-gray-100 pt-8 lg:pt-10'
+						>
+							{/* Stat 1 */}
+							<div>
+								<p className="text-2xl sm:text-3xl font-bold tracking-tight text-[#415426] font-['Manrope']">
+									{t('hero.stats.curated')}
+								</p>
+								<p className="mt-1 text-xs sm:text-sm text-gray-500 font-medium font-['Manrope']">
+									{t('hero.stats.restaurants')}
+								</p>
+							</div>
+
+							{/* Stat 2 */}
+							<div>
+								<p className="text-2xl sm:text-3xl font-bold tracking-tight text-[#415426] font-['Manrope']">
+									{t('hero.stats.savings_val')}
+								</p>
+								<p className="mt-1 text-xs sm:text-sm text-gray-500 font-medium font-['Manrope']">
+									{t('hero.stats.savings_sub')}
+								</p>
+							</div>
+
+							{/* Stat 3 */}
+							<div>
+								<p className="text-2xl sm:text-3xl font-bold tracking-tight text-[#415426] font-['Manrope']">
+									{t('hero.stats.pickup_val')}
+								</p>
+								<p className="mt-1 text-xs sm:text-sm text-gray-500 font-medium font-['Manrope']">
+									{t('hero.stats.pickup_sub')}
+								</p>
+							</div>
+						</motion.div>
+					</motion.div>
+
+					{/* Right - Phone Mockup */}
+					<motion.div
+						initial={{ opacity: 0, x: 50 }}
+						animate={{ opacity: 1, x: 0 }}
+						transition={{ duration: 0.8, delay: 0.2 }}
+						className='relative flex justify-center lg:justify-end mt-8 lg:mt-0 lg:col-span-5'
+					>
+						<div className='relative'>
+							<motion.div
+								animate={{ y: [0, -15, 0] }}
+								transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+								className='relative z-10'
+							>
+								<img
+									src='/RefreshlyMockup.png'
+									alt='ReFreshly App Interface'
+									className='w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[420px] h-auto drop-shadow-2xl mx-auto'
+								/>
+							</motion.div>
+							<div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[300px] w-[300px] lg:h-[500px] lg:w-[500px] bg-[#415426]/20 rounded-full blur-[60px] lg:blur-[80px] -z-10' />
+						</div>
+					</motion.div>
+				</div>
+			</div>
+		</section>
+	);
 };
