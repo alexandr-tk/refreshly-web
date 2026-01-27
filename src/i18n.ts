@@ -333,6 +333,9 @@ const resources = {
 					},
 				},
 			},
+			meta: {
+				title: 'ReFreshly - Great Food, Unbeatable Prices',
+			},
 		},
 	},
 	ru: {
@@ -666,6 +669,9 @@ const resources = {
 						link: 'Стать партнером',
 					},
 				},
+			},
+			meta: {
+				title: 'ReFreshly - Любимые блюда, Супер цены',
 			},
 		},
 	},

@@ -6,11 +6,15 @@ import { Button } from '@/components/ui/button';
 import { Logo } from './ui/logo';
 import { useTranslation } from 'react-i18next';
 
-// 1. Languages: Only EN and RU
+// Languages: Only EN and RU
 const languages = [
 	{ code: 'en', label: 'EN' },
 	{ code: 'ru', label: 'RU' },
 ];
+
+// App Store Links
+const APP_STORE_LINK = 'https://apps.apple.com/kz/app/refreshly/id6756068724';
+const PLAY_STORE_LINK = 'https://play.google.com/store/apps/details?id=com.refreshly';
 
 export const Navbar = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -21,6 +25,27 @@ export const Navbar = () => {
 		setIsOpen(false);
 	};
 
+	// 📱 Device Detection Handler
+	const handleAppRedirect = () => {
+		if (typeof window === 'undefined') return;
+
+		interface CustomWindow extends Window {
+			opera?: string;
+			MSStream?: unknown;
+		}
+
+		const customWindow = window as unknown as CustomWindow;
+		const userAgent = navigator.userAgent || navigator.vendor || customWindow.opera || '';
+
+		// Check for iOS (iPhone, iPad, iPod)
+		if (/iPad|iPhone|iPod/.test(userAgent) && !customWindow.MSStream) {
+			window.open(APP_STORE_LINK, '_blank');
+		} else {
+			// Default to Google Play for Android and Desktop
+			window.open(PLAY_STORE_LINK, '_blank');
+		}
+	};
+
 	const navLinks = [
 		{ href: '/#how-it-works', label: t('nav.howItWorks') },
 		{ href: '/#faq', label: t('nav.faq') },
@@ -29,7 +54,7 @@ export const Navbar = () => {
 
 	return (
 		<>
-			{/* 2. IMPORT MANROPE (Supports English & Russian perfectly) */}
+			{/* IMPORT MANROPE (Supports English & Russian perfectly) */}
 			<style>
 				{`@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');`}
 			</style>
@@ -50,7 +75,6 @@ export const Navbar = () => {
 								<Link
 									key={link.href}
 									to={link.href}
-									// Using 'Manrope' class
 									className="text-[16px] font-semibold text-white/90 hover:text-white transition-colors font-['Manrope'] tracking-wide"
 								>
 									{link.label}
@@ -80,8 +104,9 @@ export const Navbar = () => {
 								))}
 							</div>
 
-							{/* CTA Button */}
+							{/* CTA Button (Desktop) */}
 							<Button
+								onClick={handleAppRedirect} // ✅ Added Smart Redirect
 								className="
                                     h-12 px-8 rounded-xl
                                     font-['Manrope'] font-extrabold text-[16px] tracking-wide
@@ -147,7 +172,12 @@ export const Navbar = () => {
 											</button>
 										))}
 									</div>
-									<Button className="w-full bg-[#F99D1C] text-white rounded-lg py-6 text-base font-['Manrope'] font-extrabold shadow-md hover:bg-[#fab347]">
+
+									{/* CTA Button (Mobile) */}
+									<Button
+										onClick={handleAppRedirect} // ✅ Added Smart Redirect
+										className="w-full bg-[#F99D1C] text-white rounded-lg py-6 text-base font-['Manrope'] font-extrabold shadow-md hover:bg-[#fab347]"
+									>
 										{t('nav.getApp')}
 									</Button>
 								</div>
