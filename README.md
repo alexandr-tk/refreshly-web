@@ -1,73 +1,131 @@
-# Welcome to your Lovable project
+# ReFreshly 🌿
 
-## Project info
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+**A surplus food marketplace connecting eco-conscious customers with local restaurants in Almaty to reduce food waste and save money.**
 
-## How can I edit this code?
+[**View Live Demo**](https://refreshly.kz) · [**Report Bug**](https://github.com/alexandr-tk/refreshly-web/issues)
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## 📖 Project Overview
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+ReFreshly is a bilingual (English/Russian) web platform designed to tackle the problem of food waste in the hospitality industry. It allows restaurants to list unsold inventory at discounted rates (up to 60% off) for end-of-day pickup.
 
-Changes made via Lovable will be committed automatically to this repo.
+This project demonstrates the development of a high-performance landing page and partner onboarding flow, focusing on **localization**, **responsive UI/UX**, and **conversion optimization**.
 
-**Use your preferred IDE**
+### ✨ Key Features
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+* **🌐 Full Localization (i18n):** Seamlessly toggles between English and Russian with dynamic content reloading and browser title updates.
+* **📱 Smart Device Detection:** The "Get App" CTA intelligently routes users to the **App Store** (iOS) or **Google Play** (Android/Desktop) based on their user agent.
+* **🎨 Advanced Animations:** Utilizes `framer-motion` for scroll-triggered reveals, smooth transitions, and interactive hover states.
+* **⚡ Reactive Data & State:** Powered by React hooks for managing UI state (modals, language switching, form handling).
+* **📧 Serverless Email Integration:** Integrated **EmailJS** to handle partner inquiries directly from the frontend without a dedicated backend server.
+* **📊 Interactive Comparisons:** Custom-built comparison tables with responsive layouts (switching from grid to stacked cards on mobile).
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## 🛠️ Tech Stack
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+* **Core:** React 18, TypeScript, Vite
+* **Styling:** Tailwind CSS, Shadcn UI (Primitives)
+* **Animations:** Framer Motion
+* **Internationalization:** i18next, react-i18next
+* **Routing:** React Router DOM v6
+* **Icons:** Lucide React
+* **Services:** EmailJS (Form handling), TanStack Query (State management)
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🚀 Getting Started
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+To run this project locally, follow these steps:
+
+### Prerequisites
+
+* Node.js (v16.x or higher)
+* npm or yarn
+
+### Installation
+
+1.  **Clone the repository**
+    ```bash
+    git clone [https://github.com/your-username/refreshly-web.git](https://github.com/your-username/refreshly-web.git)
+    cd refreshly-web
+    ```
+
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
+
+3.  **Configure Environment Variables**
+    Create a `.env` file in the root directory and add your EmailJS credentials:
+    ```env
+    VITE_EMAILJS_SERVICE_ID=your_service_id
+    VITE_EMAILJS_TEMPLATE_ID=your_template_id
+    VITE_EMAILJS_PUBLIC_KEY=your_public_key
+    ```
+
+4.  **Run the development server**
+    ```bash
+    npm run dev
+    ```
+    Open `http://localhost:5173` in your browser.
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+├── components/       # Reusable UI components (Navbar, Footer, etc.)
+│   └── ui/           # Shadcn UI primitives (Buttons, Toasts)
+├── pages/            # Page-level components (Index, Contact, Terms)
+├── i18n.ts           # Localization configuration
+├── App.tsx           # Main router and provider setup
+└── main.tsx          # Entry point
+
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 💡 Technical Highlights
 
-**Use GitHub Codespaces**
+### Smart Redirect Logic
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+To improve conversion rates, the application detects the user's operating system to serve the correct store link immediately.
 
-## What technologies are used for this project?
+```typescript
+const handleAppRedirect = () => {
+    const userAgent = navigator.userAgent || navigator.vendor;
+    if (/iPad|iPhone|iPod/.test(userAgent)) {
+        window.open(APP_STORE_LINK, '_blank');
+    } else {
+        window.open(PLAY_STORE_LINK, '_blank');
+    }
+};
 
-This project is built with:
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Dynamic Localization
 
-## How can I deploy this project?
+The app uses `i18next` not just for text, but to dynamically update the document metadata for SEO and UX.
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+```typescript
+// App.tsx
+useEffect(() => {
+    document.title = t('meta.title');
+}, [t]);
 
-## Can I connect a custom domain to my Lovable project?
+```
 
-Yes, you can!
+## 📬 Contact
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+**Alex Tkachyov** - [LinkedIn Profile](https://linkedin.com/in/alexandr-tkachyov) - [Email](mailto:alex.tkachyov.y@gmail.com)
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Project Link: [https://github.com/alexandr-tk/refreshly-website](https://www.google.com/search?q=https://github.com/alexandr-tk/refreshly-website)
+
