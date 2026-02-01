@@ -1,131 +1,100 @@
-# ReFreshly 🌿
+<div align="center">
+  <img src="public/favicon.svg" alt="ReFreshly Logo" width="60" height="60" style="vertical-align: middle; margin-bottom: 8px;" />
+  <h1 style="display: inline-block; vertical-align: middle; margin-left: 10px;">ReFreshly Web</h1>
+  
+  <p><strong>The Growth & Acquisition Portal for Kazakhstan's Food Waste Marketplace</strong></p>
 
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+  <p>
+    <a href="https://refreshly.kz">
+      <img src="https://img.shields.io/badge/Live_Product-refreshly.kz-2ea44f?style=flat&logo=vercel" alt="Live Deployment" />
+    </a>
+    <img src="https://img.shields.io/badge/Market-Almaty,_KZ-blue" alt="Region" />
+    <img src="https://img.shields.io/badge/Funnel-Mobile_App_Acquisition-purple" alt="Objective" />
+  </p>
+</div>
 
-**A surplus food marketplace connecting eco-conscious customers with local restaurants in Almaty to reduce food waste and save money.**
+<br />
 
-[**View Live Demo**](https://refreshly.kz) · [**Report Bug**](https://github.com/alexandr-tk/refreshly-web/issues)
+## 🚀 System Overview
 
----
+This repository hosts the **consumer-facing web portal** for the ReFreshly ecosystem. 
 
-## 📖 Project Overview
-
-ReFreshly is a bilingual (English/Russian) web platform designed to tackle the problem of food waste in the hospitality industry. It allows restaurants to list unsold inventory at discounted rates (up to 60% off) for end-of-day pickup.
-
-This project demonstrates the development of a high-performance landing page and partner onboarding flow, focusing on **localization**, **responsive UI/UX**, and **conversion optimization**.
-
-### ✨ Key Features
-
-* **🌐 Full Localization (i18n):** Seamlessly toggles between English and Russian with dynamic content reloading and browser title updates.
-* **📱 Smart Device Detection:** The "Get App" CTA intelligently routes users to the **App Store** (iOS) or **Google Play** (Android/Desktop) based on their user agent.
-* **🎨 Advanced Animations:** Utilizes `framer-motion` for scroll-triggered reveals, smooth transitions, and interactive hover states.
-* **⚡ Reactive Data & State:** Powered by React hooks for managing UI state (modals, language switching, form handling).
-* **📧 Serverless Email Integration:** Integrated **EmailJS** to handle partner inquiries directly from the frontend without a dedicated backend server.
-* **📊 Interactive Comparisons:** Custom-built comparison tables with responsive layouts (switching from grid to stacked cards on mobile).
+As the primary touchpoint for our seed-funded initiative ($20k), this codebase prioritizes **Zero-Latency Localization** and **Smart Device Routing** to maximize partner and user onboarding in the bilingual Almaty market.
 
 ---
 
-## 🛠️ Tech Stack
+## 🏗️ Growth Engineering Architecture
 
-* **Core:** React 18, TypeScript, Vite
-* **Styling:** Tailwind CSS, Shadcn UI (Primitives)
-* **Animations:** Framer Motion
-* **Internationalization:** i18next, react-i18next
-* **Routing:** React Router DOM v6
-* **Icons:** Lucide React
-* **Services:** EmailJS (Form handling), TanStack Query (State management)
+We architected the frontend to serve two distinct user personas (B2C Customers & B2B Partners) with a focus on conversion rate optimization (CRO).
+
+### 1. Intelligent Traffic Routing
+To drive app installs, the platform utilizes User-Agent heuristics to dynamically reconfigure Call-to-Action (CTA) paths:
+* **iOS Traffic:** Deep links directly to the App Store.
+* **Android Traffic:** Routes to Google Play.
+
+
+### 2. Zero-Latency Localization (i18n)
+Full localization support was architected to ensure feature parity and SEO performance in both Russian and English.
+* **Dynamic Metadata:** SEO tags and page titles update synchronously with language state to preserve search indexing.
+* **Persistent State:** User preference is cached to ensure continuity across the acquisition flow.
+
+### 3. Serverless Lead Pipeline
+For B2B Partner onboarding (restaurants), we bypassed traditional backend overhead by integrating a serverless **EmailJS** pipeline. This allows for instant lead capture and CRM injection directly from the client side, reducing infrastructure costs while maintaining high reliability.
 
 ---
 
-## 🚀 Getting Started
+## 🛠️ The Tech Stack
 
-To run this project locally, follow these steps:
+| Domain | Technologies |
+| :--- | :--- |
+| **Core** | React 18, TypeScript, Vite |
+| **UX & Physics** | Framer Motion (Scroll-linked animations) |
+| **Styling System** | Tailwind CSS, Shadcn UI (Primitives) |
+| **Internationalization** | i18next, react-i18next |
+| **State Management** | React Hooks (Local), TanStack Query (Server) |
 
-### Prerequisites
+---
 
-* Node.js (v16.x or higher)
-* npm or yarn
+## ⚡ Local Development
 
-### Installation
+To spin up the acquisition portal locally:
 
-1.  **Clone the repository**
+1.  **Clone the Repository**
     ```bash
-    git clone [https://github.com/your-username/refreshly-web.git](https://github.com/your-username/refreshly-web.git)
+    git clone https://github.com/alexandr-tk/refreshly-web.git
     cd refreshly-web
     ```
 
-2.  **Install dependencies**
+2.  **Install Dependencies**
     ```bash
     npm install
     ```
 
-3.  **Configure Environment Variables**
-    Create a `.env` file in the root directory and add your EmailJS credentials:
+3.  **Environment Configuration**
+    Create a `.env` file to link the serverless email pipeline:
     ```env
     VITE_EMAILJS_SERVICE_ID=your_service_id
     VITE_EMAILJS_TEMPLATE_ID=your_template_id
     VITE_EMAILJS_PUBLIC_KEY=your_public_key
     ```
 
-4.  **Run the development server**
+4.  **Launch**
     ```bash
     npm run dev
     ```
-    Open `http://localhost:5173` in your browser.
 
 ---
 
-## 📂 Project Structure
+## 📬 Contact & Ecosystem
 
-```text
-src/
-├── components/       # Reusable UI components (Navbar, Footer, etc.)
-│   └── ui/           # Shadcn UI primitives (Buttons, Toasts)
-├── pages/            # Page-level components (Index, Contact, Terms)
-├── i18n.ts           # Localization configuration
-├── App.tsx           # Main router and provider setup
-└── main.tsx          # Entry point
-
-```
+**Alex Tkachyov** - Co-Founder & CTO
+* **Ecosystem:** [ReFreshly Mobile (iOS/Android)](https://refreshly.kz)
+* **Connect:** [LinkedIn](https://linkedin.com/in/alexandr-tkachyov)
 
 ---
 
-## 💡 Technical Highlights
 
-### Smart Redirect Logic
-
-To improve conversion rates, the application detects the user's operating system to serve the correct store link immediately.
-
-```typescript
-const handleAppRedirect = () => {
-    const userAgent = navigator.userAgent || navigator.vendor;
-    if (/iPad|iPhone|iPod/.test(userAgent)) {
-        window.open(APP_STORE_LINK, '_blank');
-    } else {
-        window.open(PLAY_STORE_LINK, '_blank');
-    }
-};
-
-```
-
-### Dynamic Localization
-
-The app uses `i18next` not just for text, but to dynamically update the document metadata for SEO and UX.
-
-```typescript
-// App.tsx
-useEffect(() => {
-    document.title = t('meta.title');
-}, [t]);
-
-```
-
-## 📬 Contact
-
-**Alex Tkachyov** - [LinkedIn Profile](https://linkedin.com/in/alexandr-tkachyov) - [Email](mailto:alex.tkachyov.y@gmail.com)
-
-Project Link: [https://github.com/alexandr-tk/refreshly-website](https://www.google.com/search?q=https://github.com/alexandr-tk/refreshly-website)
-
+## 📄 License
+© 2026 ReFreshly. All rights reserved.
+This repository is public for educational and portfolio purposes. 
+Commercial usage, modification, or distribution of this code is strictly prohibited.
