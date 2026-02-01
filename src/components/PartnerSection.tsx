@@ -5,9 +5,9 @@ import { Button } from '@/components/ui/button';
 import emailjs from '@emailjs/browser';
 import { useTranslation } from 'react-i18next';
 
-const SERVICE_ID = 'service_odj44id';
-const TEMPLATE_ID = 'template_b1099t3';
-const PUBLIC_KEY = '7lkNhPDE8UpWh2MNK';
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 export const PartnerSection = () => {
 	const { t } = useTranslation();
