@@ -15,15 +15,14 @@
 
 <br />
 
-## 🚀 System Overview
+## System Overview
 
 This repository hosts the **consumer-facing web portal** for the ReFreshly ecosystem. 
 
 As the primary touchpoint for our seed-funded initiative ($20k), this codebase prioritizes **Zero-Latency Localization** and **Smart Device Routing** to maximize partner and user onboarding in the bilingual Almaty market.
 
----
 
-## 🏗️ Growth Engineering Architecture
+## Growth Engineering Architecture
 
 We architected the frontend to serve two distinct user personas (B2C Customers & B2B Partners) with a focus on conversion rate optimization (CRO).
 
@@ -41,9 +40,8 @@ Full localization support was architected to ensure feature parity and SEO perfo
 ### 3. Serverless Lead Pipeline
 For B2B Partner onboarding (restaurants), we bypassed traditional backend overhead by integrating a serverless **EmailJS** pipeline. This allows for instant lead capture and CRM injection directly from the client side, reducing infrastructure costs while maintaining high reliability.
 
----
 
-## 🛠️ The Tech Stack
+## The Tech Stack
 
 | Domain | Technologies |
 | :--- | :--- |
@@ -53,9 +51,8 @@ For B2B Partner onboarding (restaurants), we bypassed traditional backend overhe
 | **Internationalization** | i18next, react-i18next |
 | **State Management** | React Hooks (Local), TanStack Query (Server) |
 
----
 
-## ⚡ Local Development
+## Local Development
 
 To spin up the acquisition portal locally:
 
@@ -83,18 +80,15 @@ To spin up the acquisition portal locally:
     npm run dev
     ```
 
----
 
-## 📬 Contact & Ecosystem
+## Contact & Ecosystem
 
 **Alex Tkachyov** - Co-Founder & CTO
 * **Ecosystem:** [ReFreshly Mobile (iOS/Android)](https://refreshly.kz)
 * **Connect:** [LinkedIn](https://linkedin.com/in/alexandr-tkachyov)
 
----
 
-
-## 📄 License
+## License
 © 2026 ReFreshly. All rights reserved.
 This repository is public for educational and portfolio purposes. 
 Commercial usage, modification, or distribution of this code is strictly prohibited.
