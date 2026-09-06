@@ -2,7 +2,7 @@
   <img src="public/favicon.svg" alt="ReFreshly Logo" width="60" height="60" style="vertical-align: middle; margin-bottom: 8px;" />
   <h1 style="display: inline-block; vertical-align: middle; margin-left: 10px;">ReFreshly Web</h1>
   
-  <p><strong>The Growth & Acquisition Portal for Kazakhstan's Food Waste Marketplace</strong></p>
+  <p><strong>Website for ReFreshly's surplus-food marketplace in Kazakhstan</strong></p>
 
   <p>
     <a href="https://refreshly.kz">
@@ -15,30 +15,30 @@
 
 <br />
 
-## System Overview
+## Overview
 
-This repository hosts the **consumer-facing web portal** for the ReFreshly ecosystem. 
+This repository contains the ReFreshly website, with mobile-app download links, product information, and a restaurant partnership form.
 
-As the primary touchpoint for our seed-funded initiative ($20k), this codebase prioritizes **Zero-Latency Localization** and **Smart Device Routing** to maximize partner and user onboarding in the bilingual Almaty market.
-
-
-## Growth Engineering Architecture
-
-We architected the frontend to serve two distinct user personas (B2C Customers & B2B Partners) with a focus on conversion rate optimization (CRO).
-
-### 1. Intelligent Traffic Routing
-To drive app installs, the platform utilizes User-Agent heuristics to dynamically reconfigure Call-to-Action (CTA) paths:
-* **iOS Traffic:** Deep links directly to the App Store.
-* **Android Traffic:** Routes to Google Play.
+ReFreshly is a seed-funded initiative ($20k) serving Almaty. The website supports Russian and English.
 
 
-### 2. Zero-Latency Localization (i18n)
-Full localization support was architected to ensure feature parity and SEO performance in both Russian and English.
-* **Dynamic Metadata:** SEO tags and page titles update synchronously with language state to preserve search indexing.
-* **Persistent State:** User preference is cached to ensure continuity across the acquisition flow.
+## Website behavior
 
-### 3. Serverless Lead Pipeline
-For B2B Partner onboarding (restaurants), we bypassed traditional backend overhead by integrating a serverless **EmailJS** pipeline. This allows for instant lead capture and CRM injection directly from the client side, reducing infrastructure costs while maintaining high reliability.
+Customers can find the mobile app; restaurant partners can send an inquiry.
+
+### 1. App download links
+The navigation download button checks the browser user agent:
+* **Recognized iOS devices:** Open the App Store listing.
+* **Other devices, including desktop browsers:** Open Google Play.
+
+
+### 2. Language switching (i18n)
+Russian and English strings are bundled through i18next.
+* **Metadata:** The app updates the page title in the browser when the language changes. The HTML description remains static. This does not guarantee search-engine indexing.
+* **Language state:** The app starts in Russian. A selected language lasts for the current session in memory; it is not saved across reloads.
+
+### 3. Partnership inquiries
+The restaurant form sends an email through **EmailJS** from the browser and displays success or failure. This repository does not include a CRM integration or delivery-time guarantee.
 
 
 ## The Tech Stack
@@ -46,7 +46,7 @@ For B2B Partner onboarding (restaurants), we bypassed traditional backend overhe
 | Domain | Technologies |
 | :--- | :--- |
 | **Core** | React 18, TypeScript, Vite |
-| **UX & Physics** | Framer Motion (Scroll-linked animations) |
+| **Animation** | Framer Motion (Scroll-linked animations) |
 | **Styling System** | Tailwind CSS, Shadcn UI (Primitives) |
 | **Internationalization** | i18next, react-i18next |
 | **State Management** | React Hooks (Local), TanStack Query (Server) |
@@ -54,7 +54,7 @@ For B2B Partner onboarding (restaurants), we bypassed traditional backend overhe
 
 ## Local Development
 
-To spin up the acquisition portal locally:
+To run the website locally:
 
 1.  **Clone the Repository**
     ```bash
@@ -68,7 +68,7 @@ To spin up the acquisition portal locally:
     ```
 
 3.  **Environment Configuration**
-    Create a `.env` file to link the serverless email pipeline:
+    Create a `.env` file to configure EmailJS:
     ```env
     VITE_EMAILJS_SERVICE_ID=your_service_id
     VITE_EMAILJS_TEMPLATE_ID=your_template_id
@@ -81,10 +81,10 @@ To spin up the acquisition portal locally:
     ```
 
 
-## Contact & Ecosystem
+## Contact
 
 **Alex Tkachyov** - Co-Founder & CTO
-* **Ecosystem:** [ReFreshly Mobile (iOS/Android)](https://refreshly.kz)
+* **Mobile app:** [ReFreshly Mobile (iOS/Android)](https://refreshly.kz)
 * **Connect:** [LinkedIn](https://linkedin.com/in/alexandr-tkachyov)
 
 
